@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+include('classes/SiteResultsProvider.php');
 
 	if(isset($_GET["term"])) {
 		$term = $_GET["term"];
@@ -10,6 +11,7 @@ include("config.php");
 
 	$type = isset($_GET["type"]) ? $_GET["type"] : "sites";
 
+	$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 
 	
 ?>
@@ -42,7 +44,7 @@ include("config.php");
 
 						<div class="searchBarContainer">
 
-							<input class="searchBox" type="text" name="term">
+							<input class="searchBox" type="text" name="term" value="<?php echo $term ?>">
 							<button class="searchButton">
 								<img src="assets/images/icons/search.png">
 							</button>
@@ -76,10 +78,45 @@ include("config.php");
 
 			</div>
 
+		</div>
 
+
+
+		<div class="mainResultsSection">
+			
+			<?php
+				$resultsProvider = new SiteResultsProvider($con);
+
+				$pageLimit = 20;
+
+				$numResults = $resultsProvider->getNumResults($term);
+				echo "<p class= 'resultsCount'>$numResults results found</p>";
+				echo $resultsProvider->getResultsHtml($page, $pageLimit, $term);
+			?>
+		</div>
+
+		<div class="paginationContainer">
+			<div class="pageButtons">
+				<div class="pageNumberContainer">
+					<img src="assets/images/pageStart.png">
+				</div>
+			
+				<div class="pageNumberContainer">
+					<img src="assets/images/pageEnd.png">
+				</div>
+			</div>		
 
 		</div>
+
+
 	</div>
 
 </body>
 </html>
+
+
+
+
+
+
+
