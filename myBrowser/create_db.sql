@@ -6,7 +6,7 @@ create database doodle;
 		sites varchar(512),
 		description varchar(512),
 		keywords varchar(512),
-		clicks int(11),
+		clicks int(11) default 0,
 		primary key(id)
 		);
 
@@ -17,8 +17,8 @@ create database doodle;
 		imageUrl varchar(512),
 		alt varchar(512),
 		title varchar(512),
-		clicks int(11),
-		broken tinyint(),
+		clicks int(11) default 0,
+		broken tinyint() default 0,
 
 		primary key(id)
 		);
