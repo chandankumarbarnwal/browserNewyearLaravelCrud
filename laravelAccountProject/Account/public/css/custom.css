@@ -1,0 +1,17 @@
+.footer{
+	color: white;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background-color: black;
+}
+
+.content{
+	width: 70%;
+    margin: auto;
+}
+
+span{
+	width: 170px;
+    display: inline-block;
+}
