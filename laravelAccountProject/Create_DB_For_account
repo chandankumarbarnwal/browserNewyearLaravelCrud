@@ -1,5 +1,6 @@
 create database account;
 
+
 Create table account.users (
 	id int primary key,
 	name varchar(100),
